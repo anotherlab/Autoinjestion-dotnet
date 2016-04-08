@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sample", "sample\sample.csproj", "{A827BF07-30B0-46DF-81F4-60F88F812BAD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Autoinjestion", "Autoinjestion\Autoinjestion.csproj", "{941BECCF-4D9B-4350-A61C-E32664F834DA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A827BF07-30B0-46DF-81F4-60F88F812BAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A827BF07-30B0-46DF-81F4-60F88F812BAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A827BF07-30B0-46DF-81F4-60F88F812BAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A827BF07-30B0-46DF-81F4-60F88F812BAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{941BECCF-4D9B-4350-A61C-E32664F834DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{941BECCF-4D9B-4350-A61C-E32664F834DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{941BECCF-4D9B-4350-A61C-E32664F834DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{941BECCF-4D9B-4350-A61C-E32664F834DA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
