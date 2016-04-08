@@ -62,6 +62,19 @@ namespace Autoinjestion
             }
         }
 
+        /// <summary>
+        ///  IsNewDownload() returns true for new downloads
+        /// </summary>
+        /// <param name="ProductTypeIdentifier"> The product type identifier field. See Appendix E in https://www.apple.com/itunesnews/docs/AppStoreReportingInstructions.pdf .</param>
+        /// <returns>Returns true for new downloads, false for updates or instore purchases</returns>
+        public bool IsNewDownload(string ProductTypeIdentifier)
+        {
+            IEnumerable<string> items = new List<string> { "1", "1F", "1T" };
+
+            return items.Contains(ProductTypeIdentifier);
+        }
+
+
         private string GetSafeIndexValue(string[] apps, int index)
         {
             if (apps.Length > index)
