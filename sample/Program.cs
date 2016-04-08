@@ -20,7 +20,7 @@ namespace sample
         static async void MainAsync(string[] args)
         {
             var appName = "YOURAPPNAMEHERE";
-            var itunesConnectAccount = "YourItunesConnectAccount";
+            var iTunesConnectAccount = "YourItunesConnectAccount";
             var password = "YourPassword";
             var vendorId = "YourVendorNumber";
 
@@ -35,19 +35,20 @@ namespace sample
                 {
                     password = section.Settings["password"].Value;
                     appName = section.Settings["appName"].Value;
-                    itunesConnectAccount = section.Settings["itunesConnectAccount"].Value;
+                    iTunesConnectAccount = section.Settings["itunesConnectAccount"].Value;
                     vendorId = section.Settings["vendorId"].Value;
                 }
             }
 
+            var ai = new AutoInjestion(iTunesConnectAccount, password, vendorId);
+
+            Console.WriteLine("Annual totals since 2014");
             // Get current year
             var yyyy = DateTime.Now.Year;
 
-            var ai = new AutoInjestion(itunesConnectAccount, password, vendorId);
-
-            for (int year = 2015; year <= yyyy; year++)
+            for (int year = 2014; year < yyyy; year++)
             {
-                var da1 = await ai.GetAppDataByWeek(appName, AppleiTunesReportDateType.Yearly, new DateTime(year, 1, 1));
+                var da1 = await ai.GetAppData(appName, AppleiTunesReportDateType.Yearly, new DateTime(year, 1, 1));
 
                 if (da1 != null)
                 {
@@ -58,6 +59,24 @@ namespace sample
                     Console.WriteLine("{0}: {1}", year, d2);
                 }
             }
+
+            Console.WriteLine("Monthly totals for this year");
+            var mm = DateTime.Now.Month;
+
+            for (int i = 1; i < mm; i++)
+            {
+                var da1 = await ai.GetAppDataByMonth(appName, yyyy, i);
+
+                if (da1 != null)
+                {
+                    var d2 = da1.Where(x => x.SKU.Equals("appName"))
+                        .Where(d => ai.IsNewDownload(d.ProductTypeIdentifier))
+                        .Sum(ms => int.Parse(ms.Units));
+
+                    Console.WriteLine("{0}-{1}: {2}", yyyy, i, d2);
+                }
+            }
+
         }
     }
 }

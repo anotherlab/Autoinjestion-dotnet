@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 
+// Based on https://www.apple.com/itunesnews/docs/AppStoreReportingInstructions.pdf
+
 namespace Autoinjestion
 {
     public class AutoInjestion
@@ -22,15 +24,23 @@ namespace Autoinjestion
             AccountNumber = accountNumber;
         }
 
-        public async Task<List<AppleiTunesSalesReport>> GetAppDataByWeek(string appName, AppleiTunesReportDateType appleiTunesReportDateType)
+        public async Task<List<AppleiTunesSalesReport>> GetAppDataByWeek(string appName)
         {
             var date = DateTime.Now;
             var sunday = date.AddDays(-(int)date.DayOfWeek - 0);
 
-            return await GetAppDataByWeek(appName, appleiTunesReportDateType, sunday);
+            return await GetAppData(appName, AppleiTunesReportDateType.Weekly, sunday);
+        }
+        public async Task<List<AppleiTunesSalesReport>> GetAppDataByMonth(string appName, int Year, int Month)
+        {
+            return await GetAppData(appName, AppleiTunesReportDateType.Monthly, new DateTime(Year, Month, 1));
+        }
+        public async Task<List<AppleiTunesSalesReport>> GetAppDataByYear(string appName, int Year)
+        {
+            return await GetAppData(appName, AppleiTunesReportDateType.Yearly, new DateTime(Year, 1, 1));
         }
 
-        public async Task<List<AppleiTunesSalesReport>> GetAppDataByWeek(string appName, AppleiTunesReportDateType appleiTunesReportDateType, DateTime date)
+        public async Task<List<AppleiTunesSalesReport>> GetAppData(string appName, AppleiTunesReportDateType appleiTunesReportDateType, DateTime date)
         {
             const string url = "https://reportingitc.apple.com/autoingestion.tft";
 

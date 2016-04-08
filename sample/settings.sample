@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <!--This is the format of the settings.user file-->
+  <appSettings>
+    <add key="appName" value="YOURAPPNAMEHERE"/>
+    <add key="itunesConnectAccount" value="YourItunesConnectAccount"/>
+    <add key="password" value="YourPassword"/>
+    <add key="vendorId" value="YourVendorNumber"/>
+  </appSettings>
+</configuration>
