@@ -31,13 +31,13 @@ namespace Autoinjestion
 
             return await GetAppData(appName, AppleiTunesReportDateType.Weekly, sunday);
         }
-        public async Task<List<AppleiTunesSalesReport>> GetAppDataByMonth(string appName, int Year, int Month)
+        public async Task<List<AppleiTunesSalesReport>> GetAppDataByMonth(string appName, int year, int month)
         {
-            return await GetAppData(appName, AppleiTunesReportDateType.Monthly, new DateTime(Year, Month, 1));
+            return await GetAppData(appName, AppleiTunesReportDateType.Monthly, new DateTime(year, month, 1));
         }
-        public async Task<List<AppleiTunesSalesReport>> GetAppDataByYear(string appName, int Year)
+        public async Task<List<AppleiTunesSalesReport>> GetAppDataByYear(string appName, int year)
         {
-            return await GetAppData(appName, AppleiTunesReportDateType.Yearly, new DateTime(Year, 1, 1));
+            return await GetAppData(appName, AppleiTunesReportDateType.Yearly, new DateTime(year, 1, 1));
         }
 
         public async Task<List<AppleiTunesSalesReport>> GetAppData(string appName, AppleiTunesReportDateType appleiTunesReportDateType, DateTime date)
